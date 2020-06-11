@@ -1,6 +1,6 @@
 {
-  "name": "homebridge-bigAssFans",
-  "version": "1.1.4",
+  "name": "@miblanchard/homebridge-bigAssFans",
+  "version": "1.1.12",
   "description": "A Homebridge plugin for Big Ass Fans",
   "main": "index.js",
   "repository": {
@@ -10,7 +10,7 @@
   "keywords": [
     "homebridge-plugin"
   ],
-  "author": "Sean Keenan <bigAss@skeenan.com>",
+  "author": "Michael Blanchard <bigAss@skeenan.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/sean9keenan/homebridge-bigAssFans/issues"
