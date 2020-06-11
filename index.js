@@ -143,7 +143,7 @@ function BigAssFanAccessory(log, config, existingAccessory) {
   setDefault("name", this.fanName);
   setDefault("homekitFanName", this.name + " Fan");
   setDefault("homekitLightName", this.name + " Fan Light");
-  setDefault("homekitOccupancyName", this.name + " Occupancy Sensor");
+  
   // Don't scan for any fans since we know the exact address of the fan (faster!)
   // TODO: Make fan_id optional and do the scan for the user
   if (!this.fanMaster) {
@@ -244,10 +244,6 @@ function BigAssFanAccessory(log, config, existingAccessory) {
     return (value ? Characteristic.RotationDirection.COUNTER_CLOCKWISE : Characteristic.RotationDirection.CLOCKWISE);
   }
 
-  var occupancyGetWrapper = function(value) {
-    return (value ? Characteristic.OccupancyDetected.OCCUPANCY_DETECTED : Characteristic.OccupancyDetected.OCCUPANCY_NOT_DETECTED);
-  }
-
   var lightMaxBrightness = this.myBigAss.light.max ? this.myBigAss.light.max : 16;
   var fanMaxSpeed        = this.myBigAss.fan.max ? this.myBigAss.fan.max : 7;
   
@@ -297,23 +293,8 @@ function BigAssFanAccessory(log, config, existingAccessory) {
     existingAccessory.addService(this.fanService);
   }
 
-  var existingOccupancyService;
-  if (existingAccessory){
-    existingOccupancyService = existingAccessory.getService(this.homekitOccupancyName);
-  }
-
-  this.occupancyService = existingOccupancyService || new Service.OccupancySensor(this.homekitOccupancyName);
-  
-  setCharacteristicOnService(this.occupancyService, Characteristic.OccupancyDetected,
-                              "sensor", "isOccupied",
-                              occupancyGetWrapper, null)
-    
-  if (existingAccessory && !existingOccupancyService){
-    existingAccessory.addService(this.occupancyService);
-  }
-
   this.getServices = function() {
-    return [this.lightService, this.fanService, this.occupancyService];
+    return [this.lightService, this.fanService];
   }
   if (existingAccessory){
     existingAccessory.updateReachability(true);
