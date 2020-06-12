@@ -12,6 +12,7 @@
   ],
   "author": "Michael Blanchard <bigAss@skeenan.com>",
   "license": "MIT",
+  "private": false,
   "bugs": {
     "url": "https://github.com/miblanchard/homebridge-bigAssFans/issues"
   },
