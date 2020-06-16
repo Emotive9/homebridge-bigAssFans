@@ -10,8 +10,8 @@ module.exports = function(homebridge) {
   Characteristic = homebridge.hap.Characteristic;
   UUIDGen = homebridge.hap.uuid;
 
-  homebridge.registerPlatform("homebridge-bigAssFans", "BigAssFans", BigAssFansPlatform, true);
-  homebridge.registerAccessory("homebridge-bigAssFan", "BigAssFan", BigAssFanAccessory);
+  homebridge.registerPlatform("@miblanchard/homebridge-big-ass-fans", "BigAssFans", BigAssFansPlatform, true);
+  homebridge.registerAccessory("@miblanchard/homebridge-big-ass-fans", "BigAssFan", BigAssFanAccessory);
 }
 
 function BigAssFansPlatform(log, config, api) {
@@ -103,14 +103,14 @@ BigAssFansPlatform.prototype.addAccessory = function(theFan) {
   
   this.accessories.push(newAccessory);
   if (!platform.accessoriesHashed[uuid]) {
-    this.api.registerPlatformAccessories("homebridge-bigAssFans", "BigAssFans", [newAccessory]);
+    this.api.registerPlatformAccessories("@miblanchard/homebridge-big-ass-fans", "BigAssFans", [newAccessory]);
   }
 }
 
 // Sample function to show how developer can remove accessory dynamically from outside event
 BigAssFansPlatform.prototype.removeAccessory = function() {
   this.log("Remove Accessory");
-  this.api.unregisterPlatformAccessories("homebridge-bigAssFans", "BigAssFans", this.accessories);
+  this.api.unregisterPlatformAccessories("@miblanchard/homebridge-big-ass-fans", "BigAssFans", this.accessories);
 
   this.accessories = [];
 }
