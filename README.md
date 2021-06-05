@@ -2,6 +2,8 @@ Homekit
 =======
 A Homekit implementation for Big Ass Fans. Is heavily dependant on the [unofficial Big Ass Fans API](https://github.com/sean9keenan/BigAssFansAPI).
 
+This fork removes the location sensor logic in order to simplify setup for Haiku L series fans that do not have this capability.
+
 Installing
 ----------
 [First install homebridge - instructions here](https://github.com/nfarina/homebridge#installation)
